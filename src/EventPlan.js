@@ -13,9 +13,9 @@ class EventPlan {
   }
 
   convertEventPlan () {
-    const p = document.createElement('p')
-    p.innerText = `${this.content} on ${this.date} at ${this.time}`
-    return p
+    const li = document.createElement('li')
+    li.innerText = `${this.content} on ${this.date} at ${this.time}`
+    return li
   }
 }
 

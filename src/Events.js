@@ -7,15 +7,15 @@ class Events {
     this.eventArray.push(eventPlan);
   }
 
-
-
   convertEvents () {
-    var div = document.createElement('div')
-    var arrayLength = this.eventArray.arrayLength
+    var ul = document.createElement('ul')
+    var arrayLength = this.eventArray.length 
     this.eventArray.sort((a, b) => (a.dateTime > b.dateTime) ? 1 : -1)
 
-    // for (let i = 0; i < arrayLength; i++) {
-    // 
-    // }
+   for (let i = 0; i < arrayLength; i++) {
+      ul.appendChild(this.eventArray[i].convertEventPlan());
+    }
+
+    return ul;
   }
 }

@@ -1,4 +1,7 @@
 function initialize () {
+
+  let events = new Events()
+
   var button = document.getElementById('button')
   var eventsDiv = document.getElementById('events')
   var content = document.getElementById('textbox')
@@ -6,10 +9,14 @@ function initialize () {
   var time = document.getElementById('time')
 
   button.addEventListener('click', function () {
-    let event = new EventPlan(content.value, date.value, time.value)
-    eventsDiv.appendChild(event.convertEventPlan())
+    eventsDiv.innerHTML = "";
+    let eventPlan = new EventPlan(content.value, date.value, time.value)
+    events.add(eventPlan)
+    eventsDiv.appendChild(events.convertEvents())
     content.value = date.value = time.value = ''
   })
+
 }
 
-document.addEventListener('DOMContentLoaded', initialize)
+
+ document.addEventListener("DOMContentLoaded", initialize);
