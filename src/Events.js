@@ -1,6 +1,7 @@
 class Events {
-  constructor () {
-    this.eventArray = []
+  constructor (events) {
+    events = events || []
+    this.eventArray = events.map(function(eventPlan) { return new EventPlan(eventPlan.content, eventPlan.date, eventPlan.time)})
   }
 
   add (eventPlan) {
@@ -9,7 +10,7 @@ class Events {
 
   convertEvents () {
     var ul = document.createElement('ul')
-    var arrayLength = this.eventArray.length 
+    var arrayLength = this.eventArray.length
     this.eventArray.sort((a, b) => (a.dateTime > b.dateTime) ? 1 : -1)
 
    for (let i = 0; i < arrayLength; i++) {
