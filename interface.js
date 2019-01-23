@@ -1,15 +1,16 @@
 function initialize () {
 
   var button = document.getElementById('button')
+  var weatherButton = document.getElementById('weatherbutton')
   var eventsDiv = document.getElementById('events')
   var content = document.getElementById('textbox')
   var date = document.getElementById('date')
   var time = document.getElementById('time')
+  var city = document.getElementById('city')
+  var weatherDiv = document.getElementById('weather')
 
-  //load the events array from the Local Storage
   var loadedEvents = JSON.parse(localStorage.getItem('Events'))
 
-  //create the new events object by going through each individual event plan that has been loaded
   let events = new Events(loadedEvents)
   eventsDiv.appendChild(events.convertEvents())
 
@@ -17,10 +18,19 @@ function initialize () {
     eventsDiv.innerHTML = "";
     let eventPlan = new EventPlan(content.value, date.value, time.value)
     events.add(eventPlan)
-    //saves the events array in the Local Storage
     localStorage.setItem('Events', JSON.stringify(events.eventArray))
     eventsDiv.appendChild(events.convertEvents())
     content.value = date.value = time.value = ''
+  })
+
+  weatherButton.addEventListener('click', function () {
+    var request = new XMLHttpRequest();
+    request.open('GET', "http://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc", true);
+    request.onload = function () {
+      var result = JSON.parse(this.response);
+      weatherDiv.innerText = `${result.weather[0].description} ${result.main.temp_max - 273.15}`
+    }
+    request.send();
   })
 
 }
