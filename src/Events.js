@@ -14,15 +14,17 @@ class Events {
   }
 
   convertEvents () {
+    this.sortEvents()
     var ul = document.createElement('ul')
-    var arrayLength = this.eventArray.length
-    //refactor to remove the sort from this method
-    this.eventArray.sort((a, b) => (a.dateTime > b.dateTime) ? 1 : -1)
-
-   for (let i = 0; i < arrayLength; i++) {
+    for (let i = 0; i < this.eventArray.length; i++) {
       ul.appendChild(this.eventArray[i].convertEventPlan());
     }
 
     return ul;
+  }
+
+  sortEvents () {
+    this.eventArray.sort((a, b) => (a.dateTime > b.dateTime) ? 1 : -1)
+    return this.eventArray
   }
 }
