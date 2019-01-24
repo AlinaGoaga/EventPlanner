@@ -14,7 +14,7 @@ class EventPlan {
 
   convertEventPlan () {
     const li = document.createElement('li')
-    li.innerText = `${this.content} on ${this.date} at ${this.time}`
+    li.innerText = `${this.content.substring(0,20)} ... on ${this.date} at ${this.time}`
     return li
   }
 }
