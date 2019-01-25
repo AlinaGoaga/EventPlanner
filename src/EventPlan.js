@@ -12,12 +12,6 @@ class EventPlan {
     this.dateTime = (date + time).replace(/[^0-9]/g, "")
   }
 
-  // convertEventPlan () {
-  //   const li = document.createElement('li')
-  //   li.innerText = `${this.content.substring(0,20)} ... on ${this.date} at ${this.time}`
-  //   return li
-  // }
-
 
   convertEventPlan () {
     const li = document.createElement('li')

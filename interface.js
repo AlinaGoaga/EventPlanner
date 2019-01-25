@@ -30,7 +30,9 @@ function initialize () {
   document.addEventListener('clicked_event', function(event) {
     main_container.setAttribute("style", "display: none;");
     individual_event_container.setAttribute("style", "display: inline-block;");
-    individual_event_container.appendChild(event.detail.convertEventPlan())
+    var longLi = document.createElement('li')
+    longLi.innerText = `${event.detail.content} on ${event.detail.date} at ${event.detail.time}`
+    individual_event_container.appendChild(longLi)
   })
 
   weatherButton.addEventListener('click', function () {
