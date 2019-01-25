@@ -1,9 +1,11 @@
 class Events {
   constructor (events) {
     events = events || []
-    events.filter((e) => { return e.date >= reformatDate(new Date().toLocaleDateString()) })
+    var filteredEvents = events.filter((e) => {
+      return e.date >= reformatDate(new Date().toLocaleDateString())
+    })
 
-    this.eventArray = events.map(function(eventPlan) {
+    this.eventArray = filteredEvents.map(function(eventPlan) {
       { return new EventPlan(eventPlan.content, eventPlan.date, eventPlan.time) }
     })
 
