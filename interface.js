@@ -2,7 +2,6 @@ function initialize () {
 
   var main_container = document.getElementById('main_container')
   var individual_event_container = document.getElementById('individual_event_container')
-
   var button = document.getElementById('button')
   var weatherButton = document.getElementById('weatherbutton')
   var eventsDiv = document.getElementById('events')
@@ -27,14 +26,6 @@ function initialize () {
   })
 
 
-  document.addEventListener('clicked_event', function(event) {
-    main_container.setAttribute("style", "display: none;");
-    individual_event_container.setAttribute("style", "display: inline-block;");
-    var longLi = document.createElement('li')
-    longLi.innerText = `${event.detail.content} on ${event.detail.date} at ${event.detail.time}`
-    individual_event_container.appendChild(longLi)
-  })
-
   weatherButton.addEventListener('click', function () {
     var request = new XMLHttpRequest();
     request.open('GET', "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc", true);
@@ -58,6 +49,24 @@ function initialize () {
       }
       request.send();
     });
+  })
+
+  document.addEventListener('clicked_event', function(event) {
+    individual_event_container.innerText = "";
+    main_container.setAttribute("style", "display: none;");
+    individual_event_container.setAttribute("style", "display: inline-block;");
+    var homepagebutton = document.createElement('button')
+    var longLi = document.createElement('li')
+    homepagebutton.innerHTML = 'Take me back to the homepage';
+
+    homepagebutton.addEventListener('click', function () {
+      main_container.setAttribute("style", "display: inline-block;");
+      individual_event_container.setAttribute("style", "display: none;");
+    })
+
+    longLi.innerText = `${event.detail.content} on ${event.detail.date} at ${event.detail.time}`
+    individual_event_container.appendChild(homepagebutton)
+    individual_event_container.appendChild(longLi)
   })
 
 }
