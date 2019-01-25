@@ -31,7 +31,7 @@ function initialize () {
     request.open('GET', "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc", true);
     request.onload = function () {
       var result = JSON.parse(this.response);
-      weatherDiv.innerText = `${result.weather[0].description} ; min temp: ${result.main.temp_min - 273.15}, max temp: ${result.main.temp_max - 273.15}`
+      weatherDiv.innerText = `Expect ${result.weather[0].description}. Temperature: ${result.main.temp_min - 273.15}°C minimum with a maximum of ${result.main.temp_max - 273.15}°C.`
     }
     request.send();
   })
@@ -45,7 +45,7 @@ function initialize () {
       request.open('GET', `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc`, true);
       request.onload = function () {
         var result = JSON.parse(this.response);
-        weatherDiv.innerText = `${result.weather[0].description} ; min temp: ${result.main.temp_min - 273.15}, max temp: ${result.main.temp_max - 273.15}`
+        weatherDiv.innerText = `Expect ${result.weather[0].description}. Temperature: ${result.main.temp_min - 273.15}°C minimum with a maximum of ${result.main.temp_max - 273.15}°C.`
       }
       request.send();
     });
@@ -57,6 +57,7 @@ function initialize () {
     individual_event_container.setAttribute("style", "display: inline-block;");
     var homepagebutton = document.createElement('button')
     var longLi = document.createElement('li')
+    longLi.setAttribute("style", "margin: 1em");
     homepagebutton.innerHTML = 'Take me back to the homepage';
 
     homepagebutton.addEventListener('click', function () {
@@ -64,7 +65,7 @@ function initialize () {
       individual_event_container.setAttribute("style", "display: none;");
     })
 
-    longLi.innerText = `${event.detail.content} on ${event.detail.date} at ${event.detail.time}`
+    longLi.innerText = `${event.detail.content}` + '\n' + `on ${event.detail.date} at ${event.detail.time}`
     individual_event_container.appendChild(homepagebutton)
     individual_event_container.appendChild(longLi)
   })

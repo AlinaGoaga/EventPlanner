@@ -5,3 +5,12 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+#events, #weather {
+  margin: 1em;
+}
+
+#individual_event_container {
+  margin: 2em;
+  width: 60em;
+}
