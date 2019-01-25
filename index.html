@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+  <title>Event planner app</title>
+
 </head>
 <body>
 
-  <div id="main_container" visible>
+  <div class="modal-body row" style="margin: 5em">
+    <div class="col-md-3">
+      <h3> Welcome to the event planner app! <h3>
+        <h4> You can now keep track of your events very easily! </h4>
+        <h5> Don't know what to wear? </h5>
+        <h5> A "check the weather" option has also been included to help you decide. </h5>
+      </div>
 
-    <div style="margin: 2em">
-      <input type="text" id="textbox">
-      <input type="date" id="date">
-      <input type="time" id="time">
-      <button id="button">Create event</button>
+      <div class="col-md-9">
+        <div class="container" id="main_container" visible>
+          <div>
+            <input type="text" id="textbox" placeholder="Insert event details">
+            <input type="date" id="date">
+            <input type="time" id="time">
+            <button id="button">Create event</button>
+          </div>
+          <div id="events" style="margin: 1em;">
+          </div>
+          <div>
+            <input type="text" id="city" placeholder="Insert city">
+            <button id="weatherbutton">See the weather for this city</button>
+            <button id="getlocationbutton">Get weather at my location</button>
+          </div>
+          <div id="weather">
+          </div>
+        </div>
+
+        <div class="container" id="individual_event_container" style="margin: 5em;" hidden>
+        </div>
+
+      </div>
+
     </div>
 
-    <div id="events">
-    </div>
+    <script src="src/EventPlan.js"></script>
+    <script src="src/Events.js"></script>
+    <script src="interface.js"></script>
 
-    <div style="margin: 2em">
-      <input type="text" id="city">
-      <button id="weatherbutton">See the weather for this city</button>
-      <button id="getlocationbutton">Get weather at my location</button>
-    </div>
+  </body>
 
-    <div id="weather">
-    </div>
-
-  </div>
-
-  <div id="individual_event_container" hidden>
-  </div>
-
-  <script src="src/EventPlan.js"></script>
-  <script src="src/Events.js"></script>
-  <script src="interface.js"></script>
-
-</body>
-
-</html>
+  </html>
