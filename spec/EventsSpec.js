@@ -3,9 +3,9 @@
 
 describe('Events', function () {
   let events = new Events
-  let e1 = {content: 'Event', date: '2019-04-25', time: '23:45', dateTime: '20190501', convertEventPlan: ()=> {} }
-  let e2 = {content: 'Event2', date: '2019-07-23', time: '02:34', dateTime: '20190502', convertEventPlan: ()=> {} }
-  let e3 = {content: 'Event2', date: '2019-07-21', time: '02:34', dateTime: '20190502', convertEventPlan: ()=> {} }
+  let e1 = {content: 'Event', date: '2019-04-25', time: '23:45', dateTime: '20190501', convertEventPlan: ()=> {let li = document.createElement('li'); return li; } }
+  let e2 = {content: 'Event2', date: '2019-07-23', time: '02:34', dateTime: '20190502', convertEventPlan: ()=> {let li = document.createElement('li'); return li; } }
+  let e3 = {content: 'Event2', date: '2019-07-21', time: '02:34', dateTime: '20190502', convertEventPlan: ()=> {let li = document.createElement('li'); return li; } }
 
   describe('eventArray', function () {
     it('should have an empty array by default', function () {
@@ -39,12 +39,14 @@ describe('Events', function () {
     })
   })
 
-  // describe('convertEvents', function () {
-  //   it('should return a div with a number of elements', function () {
-  //     events.add(e1);
-  //     events.add(e2);
-  //     events.convertEvents();
-  //     expect(events.childElementCount).toEqual(2)
-  //   })
-  // })
+  describe('convertEvents', function () {
+    it('should return a div with a number of elements', function () {
+      let events3 = new Events
+      events3.add(e1);
+      events3.add(e2);
+      events3.add(e3);
+      var ul = events3.convertEvents();
+      expect(ul.childElementCount).toEqual(3)
+    })
+  })
 })
