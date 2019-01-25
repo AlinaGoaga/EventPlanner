@@ -6,23 +6,30 @@
 </head>
 <body>
 
-  <div style="margin: 2em">
-    <input type="text" id="textbox">
-    <input type="date" id="date">
-    <input type="time" id="time">
-    <button id="button">Create event</button>
+  <div id="main_container" visible>
+
+    <div style="margin: 2em">
+      <input type="text" id="textbox">
+      <input type="date" id="date">
+      <input type="time" id="time">
+      <button id="button">Create event</button>
+    </div>
+
+    <div id="events">
+    </div>
+
+    <div style="margin: 2em">
+      <input type="text" id="city">
+      <button id="weatherbutton">See the weather for this city</button>
+      <button id="getlocationbutton">Get weather at my location</button>
+    </div>
+
+    <div id="weather">
+    </div>
+
   </div>
 
-  <div id="events">
-  </div>
-
-  <div style="margin: 2em">
-    <input type="text" id="city">
-    <button id="weatherbutton">See the weather for this city</button>
-    <button id="getlocationbutton">Get weather at my location</button>
-  </div>
-
-  <div id="weather">
+  <div id="individual_event_container" hidden>
   </div>
 
   <script src="src/EventPlan.js"></script>
