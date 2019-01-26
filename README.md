@@ -2,7 +2,9 @@
 
 This is a single page app to help you keep track of upcoming events. It also features a check the weather function to help you choose the outfit you'll be wearing at your events! 
 
-This app was test driven using my own custom testing framework : https://github.com/AlinaGoaga/JS_testing_framework
+This app was test driven using my own testing framework : [framework](https://www.google.com "custom framework") 
+
+The app is also online at: alinas_event_app.surge.sh
 
 ## Supported features
 
