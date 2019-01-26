@@ -25,6 +25,9 @@ This app was test driven using my own custom testing framework : https://github.
 
 ### Notes development / my approach
 
+  //once clicked on, an individual event div is made visible whilst the main div holding the events is hidden
+
+
 Further developements 
 
 - 
