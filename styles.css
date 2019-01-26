@@ -14,3 +14,7 @@ body {
   margin: 2em;
   width: 60em;
 }
+
+#main_container {
+  margin-top: 2em;
+}
