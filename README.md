@@ -31,4 +31,5 @@ The app is also online at: [event app](alinas_event_app.surge.sh)
 
 - an individual event page section has been created by hidding / making visible different divs: once clicked on, an individual event div is made visible whilst the main div holding all upcoming events is hidden
 - this app uses Local Storage to store events; it doesn't support a delete feature at the moment, however the events can be directly removed from ```Local Storage (Inspect -> (at the top) Application -> (on the left hand side) Local Storage```
+- bootstrap has been used to style the application (some of the styling happens in interface.js as the elements being style are not present on the page at all times)
 
