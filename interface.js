@@ -12,7 +12,6 @@ function initialize () {
   var weatherDiv = document.getElementById('weather')
 
   var loadedEvents = JSON.parse(localStorage.getItem('Events'))
-
   let events = new Events(loadedEvents)
   eventsDiv.appendChild(events.convertEvents())
 
@@ -25,10 +24,10 @@ function initialize () {
     content.value = date.value = time.value = ''
   })
 
-
   weatherButton.addEventListener('click', function () {
     var request = new XMLHttpRequest();
-    request.open('GET', "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc", true);
+    var urlAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc";
+    request.open('GET', urlAPI, true);
     request.onload = function () {
       var result = JSON.parse(this.response);
       weatherDiv.innerText = `Expect ${result.weather[0].description}. Temperature: ${result.main.temp_min - 273.15}°C minimum with a maximum of ${result.main.temp_max - 273.15}°C.`
@@ -42,7 +41,8 @@ function initialize () {
       var latitude = crd.latitude
       var longitude = crd.longitude
       var request = new XMLHttpRequest();
-      request.open('GET', `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc`, true);
+      var urlAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=4f50ce5aeb8f1f079e6f18009dfbfbbc`
+      request.open('GET', urlAPI , true);
       request.onload = function () {
         var result = JSON.parse(this.response);
         weatherDiv.innerText = `Expect ${result.weather[0].description}. Temperature: ${result.main.temp_min - 273.15}°C minimum with a maximum of ${result.main.temp_max - 273.15}°C.`
@@ -52,18 +52,20 @@ function initialize () {
   })
 
   document.addEventListener('clicked_event', function(event) {
-    individual_event_container.innerText = "";
     main_container.setAttribute("style", "display: none;");
+    individual_event_container.innerText = "";
     individual_event_container.setAttribute("style", "display: inline-block;");
+
     var homepagebutton = document.createElement('button')
-    var longLi = document.createElement('li')
-    longLi.setAttribute("style", "margin: 1em");
     homepagebutton.innerHTML = 'Take me back to the homepage';
 
     homepagebutton.addEventListener('click', function () {
       main_container.setAttribute("style", "display: inline-block;");
       individual_event_container.setAttribute("style", "display: none;");
     })
+
+    var longLi = document.createElement('li')
+    longLi.setAttribute("style", "margin: 1em");
 
     longLi.innerText = `${event.detail.content}` + '\n' + `on ${event.detail.date} at ${event.detail.time}`
     individual_event_container.appendChild(homepagebutton)
