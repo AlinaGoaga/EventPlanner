@@ -4,8 +4,6 @@ This is a single page app to help you keep track of upcoming events. It also fea
 
 This app was test driven using my own testing framework: [custom JS framework](https://github.com/AlinaGoaga/JS_testing_framework) 
 
-The app is also online at: [event app](alinas_event_app.surge.sh)
-
 ![event app screenshot](https://github.com/AlinaGoaga/EventPlanner/blob/master/events%20app%20screenshot.jpeg)
 
 ## Supported features
